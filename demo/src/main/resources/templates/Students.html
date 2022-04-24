@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+</head>
+<body>
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+        <h5 class="text-white h4">Collapsed content</h5>
+        <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Student Management System</a>
+        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" th:href="@{/students}">Student Management</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="roll">
+        <h1>List Students</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a class="btn btn-primary btn-sm-3 mb-3" th:href="@{/students/new}">Add Student</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Student First Name</th>
+            <th>Student First Last Name</th>
+            <th>Student First Email</th>
+            <th> Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${students}">
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/students/edit/{id} (id=${student.id})}"> Update</a>
+                <a class="btn btn-danger" th:href="@{/students/{id} (id=${student.id})}"> Delete</a>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
